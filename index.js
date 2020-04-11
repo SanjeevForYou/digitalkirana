@@ -5,16 +5,29 @@ const PORT = process.env.PORT || 5000;
 
 express()
   .use(express.static(path.join(__dirname, "public")))
-  .use(bodyParser.urlencoded({ extended: true }))
+  .use(bodyParser.urlencoded({
+    extended: true
+  }))
   .set("views", path.join(__dirname, "views"))
   .set("view engine", "ejs")
   .get("/", (req, res) => res.render("pages/index"))
   .get("/about", (req, res) => res.render("pages/about"))
+  .get("/order", (req, res) => res.render("pages/order"))
   .get("/contact", (req, res) => res.render("pages/contact"))
   .post("/submit", (req, res) => {
-    const { fullName, phone, email, items } = req.body;
+    const {
+      fullName,
+      phone,
+      email,
+      items
+    } = req.body;
     const body = req.body;
-    console.log("Going to db", { fullName, phone, email, items });
-    res.redirect(`/?test=success`);
+    console.log("Going to db", {
+      fullName,
+      phone,
+      email,
+      items
+    });
+    res.redirect(`/order?test=success`);
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));

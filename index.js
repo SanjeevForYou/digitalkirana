@@ -4,8 +4,7 @@ const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 5000;
 const fs = require("fs");
 
-const db = require("./config/db.config");
-
+const db = "./store/db.json";
 express()
   .use(express.static(path.join(__dirname, "public")))
   .use(
@@ -27,9 +26,18 @@ express()
       email,
       items,
     });
-    fs.readFile("./store/db.json", (err, data) => {
+    fs.readFile(db, (err, data) => {
       var json = JSON.parse(data);
       console.log("Db.json", json);
+      json.location.push({
+        "id": 1,
+        "name": "kathmandu"
+      });
+      fs.writeFile(db, JSON.stringify(json), (err) => {
+        if (err) {
+          console.log("Cannot write to file");
+        }
+      })
     });
     //res.redirect(`/order_success`);
   })

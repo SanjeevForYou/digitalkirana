@@ -1,6 +1,6 @@
-const { Pool } = require("pg");
-const connectionString = process.env.HEROKU_POSTGRESQL_GOLD_URL;
-const pool = new Pool({
+var { Pool } = require("pg");
+var connectionString = process.env.HEROKU_POSTGRESQL_GOLD_URL;
+var pool = new Pool({
   connectionString: connectionString,
   ssl: true,
 });

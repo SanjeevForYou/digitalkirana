@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 5000;
+const fs = require("fs");
 
 const db = require("./config/db.config");
 
@@ -26,6 +27,10 @@ express()
       email,
       items,
     });
-    res.redirect(`/order_success`);
+    fs.readFile("./store/db.json", (err, data) => {
+      var json = JSON.parse(data);
+      console.log("Db.json", json);
+    });
+    //res.redirect(`/order_success`);
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));

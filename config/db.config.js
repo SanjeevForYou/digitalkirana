@@ -1,9 +1,10 @@
-const { Client } = require("pg");
-
-const client = new Client({
-  connectionString: process.env.HEROKU_POSTGRESQL_GOLD_URL,
+const { Pool } = require('pg')
+const connectionString = process.env.HEROKU_POSTGRESQL_GOLD_URL,
+const pool = new Pool({
+  connectionString: connectionString,
   ssl: true,
-});
-await client.connect();
-const res = await client.query("SELECT NOW()");
-await client.end();
+})
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})

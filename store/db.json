@@ -1,5 +1,1 @@
-{
-  "order": [],
-  "location": [],
-  "store": []
-}
+{"order":[{"id":1,"name":"Bijay Khatri","phone":"8582204254","email":"bijay.khatri@servicenow.com","items":"hello workd, kkga","store_id":1},{"id":2,"name":"Bijay Khatri2","phone":"8582204254","email":"bijay.khatri@servicenow.com","items":"1 kg rice, 2 kg cauli","store_id":1}],"location":[],"store":[]}

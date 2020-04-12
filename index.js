@@ -19,7 +19,7 @@ express()
   .get("/order_success", (req, res) => res.render("pages/order_success"))
   .get("/contact", (req, res) => res.render("pages/contact"))
   .post("/submit", (req, res) => {
-    const { fullName, phone, email, items } = req.body;
+    const { name, phone, email, items } = req.body;
     console.log("Going to db...", {
       name,
       phone,

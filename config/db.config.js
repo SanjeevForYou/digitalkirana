@@ -6,7 +6,8 @@ var pool = new Pool({
 });
 console.log("Executing query now");
 pool.query("SELECT NOW()", (err, res) => {
-  console.log("*** SELECT LOGS ****", err, res);
+  console.log("*** SELECT LOGS SUCCESS ****", res);
+  console.log("*** SELECT LOGS ERROR ****", err);
   pool.end();
 });
 console.log("End of query");

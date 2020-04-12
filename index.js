@@ -21,7 +21,7 @@ express()
   .post("/submit", (req, res) => {
     const { fullName, phone, email, items } = req.body;
     console.log("Going to db...", {
-      fullName,
+      name,
       phone,
       email,
       items,
@@ -29,9 +29,13 @@ express()
     fs.readFile(db, (err, data) => {
       var json = JSON.parse(data);
       console.log("Db.json", json);
-      json.location.push({
-        "id": 1,
-        "name": "kathmandu"
+      json.order.push({
+        "id": json.order.length + 1,
+        name,
+        phone,
+        email,
+        items,
+        "store_id": 1
       });
       fs.writeFile(db, JSON.stringify(json), (err) => {
         if (err) {
@@ -39,6 +43,6 @@ express()
         }
       })
     });
-    //res.redirect(`/order_success`);
+    res.redirect(`/order_success`);
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));

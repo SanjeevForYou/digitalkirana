@@ -3,6 +3,8 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 5000;
 
+const db = require("./config/db.config");
+
 express()
   .use(express.static(path.join(__dirname, "public")))
   .use(
@@ -18,7 +20,6 @@ express()
   .get("/contact", (req, res) => res.render("pages/contact"))
   .post("/submit", (req, res) => {
     const { fullName, phone, email, items } = req.body;
-    const body = req.body;
     console.log("Going to db...", {
       fullName,
       phone,

@@ -1,5 +1,6 @@
 const { Client } = require("pg");
 
+console.log("***********", process.env.HEROKU_POSTGRESQL_GOLD_URL);
 const client = new Client({
   connectionString: process.env.HEROKU_POSTGRESQL_GOLD_URL,
   ssl: true,

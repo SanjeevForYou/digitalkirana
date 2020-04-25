@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% include ../partials/header.ejs %>
-  </head>
 
-  <body>
-    <% include ../partials/nav.ejs %>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
 
-    <div class="text-center">
-      <div class="container">
-        <h1>Digital Kinmel</h1>
-        <label>Steps:</label>
-        <ul class="list-group">
-          <li class="list-group-item">Chose the store</li>
-          <li class="list-group-item">Place the order</li>
-          <li class="list-group-item">
-            Store notifies you when your order is ready
-          </li>
-          <li class="list-group-item">Pay and pick up from the store</li>
-        </ul>
-      </div>
-    </div>
+<body>
+  <% include ../partials/nav.ejs %>
+
+  <div class="text-center">
     <div class="container">
-      <% include ../partials/order.ejs %>
+      <h1>Digital Kinmel</h1>
+      <label>Steps:</label>
+      <ul class="list-group">
+        <li class="list-group-item">Chose the store</li>
+        <li class="list-group-item">Place the order</li>
+        <li class="list-group-item">
+          Store notifies you when your order is ready
+        </li>
+        <li class="list-group-item">Pay and pick up from the store</li>
+      </ul>
     </div>
+  </div>
+  <div class="container">
+    <% include ../partials/order.ejs %>
+  </div>
 
-    <div class="container">
-      @Copyright DigitalKinmel
-    </div>
-  </body>
+  <% include ../partials/footer.ejs %>
+</body>
+
 </html>

@@ -14,12 +14,26 @@ express()
   )
   .set("views", path.join(__dirname, "views"))
   .set("view engine", "ejs")
-  .get("/", (req, res) => res.render("pages/index"))
+  .get("/", (req, res) => {
+    fs.readFile(db, (err, data) => {
+      var json = JSON.parse(data);
+      console.log(json.location);
+      return res.render("pages/index", {
+        locations: json.location,
+        stores: json.store
+      })
+    })
+  })
   .get("/about", (req, res) => res.render("pages/about"))
   .get("/order_success", (req, res) => res.render("pages/order_success"))
   .get("/contact", (req, res) => res.render("pages/contact"))
   .post("/submit", (req, res) => {
-    const { name, phone, email, items } = req.body;
+    const {
+      name,
+      phone,
+      email,
+      items
+    } = req.body;
     console.log("Going to db...", {
       name,
       phone,
